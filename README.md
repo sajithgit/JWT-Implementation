@@ -6,7 +6,7 @@ How subject and claim can be verified .
 Two API are defined in the project generateTokan and validateToken
 
 generateToken
-This APi will accespt user details . Authentiacation can be implemented as per requirement.
+This APi will accept user details . Authentication can be implemented as per requirement.
 On success JWT token is generated and response is sent
 
 validateToken
