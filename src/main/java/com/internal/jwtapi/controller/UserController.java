@@ -1,5 +1,6 @@
 package com.internal.jwtapi.controller;
 
+import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.internal.jwtapi.JwtApplication;
@@ -72,7 +73,7 @@ public class UserController {
                 username = verify.getSubject();
                 password = verify.getClaim("password").asString();
                 String role = verify.getClaim("role").asString();
-            }catch (SignatureVerificationException signException)
+            }catch (SignatureVerificationException | JWTDecodeException jwtDecodeException)
             {
                 logger.error("Token tampered");
                 return "invalidToken";
@@ -82,6 +83,6 @@ public class UserController {
             return "No Token in Header";
         }
 
-        return "valid : "+username + " Password :"+password;
+        return "valid Token : "+username;
     }
 }
